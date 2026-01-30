@@ -594,7 +594,7 @@ def get_stock_csv(stock_type):
     # )
     df = pd.read_sql(
         text("""
-        SELECT part_number, description, free_stock as stock" 
+        SELECT part_number, description, free_stock as stock 
         FROM parts_stock 
         WHERE stock_type = :st AND is_active = TRUE
         """), 
@@ -611,4 +611,5 @@ def get_user_orders(user_id):
             {"uid": user_id}
         ).fetchall()
     return [dict(row._mapping) for row in rows]
+
 
